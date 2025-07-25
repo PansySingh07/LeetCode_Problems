@@ -1,0 +1,12 @@
+class Solution {
+    public char findTheDifference(String s, String t) {
+        char r = 0;
+        for(char e : s.toCharArray()){//picks the character and fill in e
+        r = (char) (r^e); //exore// or r^=e;
+        }
+        for (char e : t.toCharArray()){
+            r = (char) (r^e); // or r^=e;
+        }
+        return r;
+        }
+    }
