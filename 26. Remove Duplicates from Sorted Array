@@ -1,0 +1,30 @@
+// //approach 1=====================================================================
+class Solution {
+    public int removeDuplicates(int[] nums) {
+//     Set<Integer> set = new LinkedHashSet<>();
+//     for (int i :nums){
+//         set.add(i);
+//     }
+//     int index=0;
+//     for (Integer i :set ){
+//         nums[index++] = i;
+//     }
+//     return index;
+// }
+// }
+
+
+
+// 2 pointor approach ==========================================
+class Solution {
+    public int removeDuplicates(int[] nums) {
+int writer =0;
+for(int reader =1; reader<nums.length; reader++){
+    if(nums[writer]!= nums[reader]){
+        writer++;
+        nums[writer] = nums[reader];
+    }
+}
+return writer+1;
+    }
+}
