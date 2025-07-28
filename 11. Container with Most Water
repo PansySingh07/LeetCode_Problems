@@ -1,3 +1,4 @@
+============================================== two pointer method =========================================
 class Solution {
     public int maxArea(int[] height) {
       int left = 0;
@@ -18,3 +19,26 @@ class Solution {
       return maxWater;
     }
 }
+
+========================================== Brute Force method ===================================================
+ class Solution {
+     public int maxArea(int[] height) {
+         //area
+         //width
+         //min height
+         //2 index i, j and width = j-1
+
+         //min(height [i], height[j])
+         //area = minHeight*width
+         int max=0;
+         for(int i =0; i<height.length; i++){
+             for( int j =i+1; j<height.length; j++){
+                 int h = Math.min(height[i], height[j]);
+                 int w = j-i;
+                 int area = h*w;
+                 max = Math.max (area, max);
+             }
+         }
+         return max;
+     }
+ }
