@@ -1,4 +1,45 @@
- import java.util.HashMap;
+=================================================Method 1 [two pointer] ===================================
+class Solution {
+public int[] twoSum(int[] nums, int target) {
+     int [] copyArr = Arrays.copyOf( nums, nums.length);
+    Arrays.sort(nums); //array will get sorted
+    //maintain 2 pointers
+    int i =0;
+    int j= nums.length-1;
+    int first = -1;
+    int second = -1;
+    while( i<j){
+        int sum = nums[i] + nums[j];
+        if (sum == target){
+               first = nums[i];
+            second = nums[j];
+            break;
+        }
+        else if (sum > target){
+         
+            j--;
+        }
+        else if (sum<target){
+            i++;
+        }
+    }
+    //check the index in original array
+    int index1=-1;
+    int index2 = -1;
+    for (int k=0; k<copyArr.length; k++){
+        if(index1 == -1 && copyArr[k]==first){
+            index1=k;
+        }
+        else if (index2==-1 && copyArr[k] ==second){
+            index2=k;
+        }
+    }
+    return new int[]{index1, index2};
+}
+}
+
+============================================ Method 2 ===========================================
+import java.util.HashMap;
 class Solution {
     public int[] twoSum(int[] nums, int target) {
      
