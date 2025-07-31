@@ -1,0 +1,33 @@
+============================================================ Method 1 =================================================
+class Solution {
+     public int maxSubArray(int[] nums) { //kadans algorithm[Important question that is asked so many times in companies.]
+
+     int sum = nums[0];
+     int max = nums[0];
+
+     for ( int i = 1; i < nums.length; i++){
+        sum = sum + nums[i];
+        sum = Math.max(sum, nums[i]); // to find the max in sum and num[i]
+        max = Math.max(sum, max);
+     }   
+     return max;
+    }
+
+========================================================= Method 2 ====================================================
+      public int maxSubArrayBrute(int[] nums) { //brutefrost
+       int maxSum = Integer.MIN_VALUE;
+       for (int i =0; i<nums.length; i++){
+        int currentSum = 0;
+        // SubArray Sum
+        for (int j =i; j<nums.length; j++){
+        currentSum += nums[j];
+        maxSum = Math.max(currentSum, maxSum);
+        }
+       }
+       return maxSum;
+      }
+}
+
+
+
+   
