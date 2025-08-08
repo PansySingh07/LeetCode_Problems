@@ -1,0 +1,21 @@
+public class longestSubArraySum {
+    public static void main(String[]args){
+        int arr[] = {3, 1, 2, 7, 1, 1, 1, 2, 3};
+        int k = 8;
+        // Maintain two pointers
+        int left = 0; 
+        int currentSum = 0;
+        int max = 0;
+        // mover to the right till the given constraint is valid
+        for(int right = 0; right<arr.length; right++){
+            currentSum = currentSum + arr[right];
+            //if constraint(k) is not valid than keep removing the left element
+                while(currentSum>k){
+                    currentSum = currentSum - arr[left];
+                    left++;
+                }
+                max = Math.max(max, right-left+1);
+        }
+        System.out.println(max);
+    }
+}
