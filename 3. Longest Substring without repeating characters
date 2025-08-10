@@ -18,5 +18,27 @@ class Solution {
     }
 }
 
+// ========================================================= slide window method ====================================================================
+class Solution {
+    public int lengthOfLongestSubstring(String s) {
+int i = 0;
+int j = 0;
+int max = 0;
+int[] hashset = new int[128]; //default fill with 0 [128 skil value last pos]
+while(j<s.length()){
+    char singleChar = s.charAt(j);
+    hashset[singleChar]++; // hashSet[ ascii Value of cahr] hashset [a] hashset [97] ++ = 0+1
+    while(hashset[singleChar]>1){ // character appear more than one
+        char leftChar = s.charAt(i);
+        hashset[leftChar]--;
+        i++; //slide the window(left to right move)
+    }
+    max = Math.max(max, j-i+1);
+    j++;
+}
+    return max;
+    }
+    }
+
 
 
