@@ -1,0 +1,35 @@
+class Solution {
+    public int romanToInt(String romanNumber) {
+       HashMap<String, Integer> map = new HashMap<>();
+       map.put("I", 1);
+       map.put("V",5);
+       map.put("X",10);
+       map.put("L",50);
+       map.put("C",100);
+       map.put("D",500);
+       map.put("M",1000);
+       //scan romanNumber String from Left to right
+       int i = 0;
+       int sum = 0;
+       while(i<romanNumber.length()){
+        char singleChar = romanNumber.charAt(i); // Get the single char from the string
+        String currentSymbol = String.valueOf(singleChar); // convert char into String
+        int currentValue = map.get(currentSymbol); // map based on key get the value
+        int nextValue = 0;
+        if(i+1<romanNumber.length()){
+            char nextChar = romanNumber.charAt(i+1); // Get the single char from the string
+        String nextSymbol = String.valueOf(nextChar); // convert char into String
+        nextValue = map.get(nextSymbol);
+        }
+        if(currentValue<nextValue){
+            sum = sum + (nextValue-currentValue);
+            i = i+2; // jump to the value after next value
+        }
+        else{
+            sum = sum+currentValue;
+            i = i+1; // simply jum to next
+        }
+       } 
+       return sum;
+    }
+}
