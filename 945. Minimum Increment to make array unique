@@ -1,0 +1,17 @@
+class Solution {
+    public int minIncrementForUnique(int[] nums) {
+        int minInc = 0;
+        //Sort the array
+        Arrays.sort(nums);
+        for(int i = 1; i<nums.length; i++){
+            // compare previous with current
+            if(nums[i]<=nums[i-1]){
+               int inc =  nums[i-1] +1- nums[i];
+               minInc += inc;
+               nums[i] = nums[i-1] +1;
+            }
+        }
+        return minInc;
+    }
+  
+}
