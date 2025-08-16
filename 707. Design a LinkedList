@@ -1,0 +1,108 @@
+//1- using singly linkedList
+class Node{
+    int val; // for the data (Instance variable)
+    Node next; // for the next node reference
+    // creating constructor
+    Node (int val){//local variable
+        this.val = val; // when instance var = local var, this is compulsory
+    }
+}
+// class Node<T>{ //when we don't have idea what type of data is stroed.
+//     T data;
+//     Node<T> next;
+// }
+//Node<String>node = new Node<>("Apple");
+//Node<Integer> node = new Node<>("100");
+
+class MyLinkedList {
+    int size; //total number of nodes
+    Node head; //head contains the reference of the first node
+    
+    public MyLinkedList() {
+        size = 0;
+    }
+    
+    public int get(int index) {
+        if(index<0 || index>=size){
+            return -1;
+        }
+        else{
+            Node temp = head;
+            for(int i = 0; i<index; i++){
+                temp = temp.next;
+            }
+            return temp.val;
+        }
+    }
+    
+    public void addAtHead(int val) {
+        // Create a New node
+        Node node = new Node(val);
+        size++;
+        // no linkedList exists
+        if (head == null){
+            head = node;
+        }
+        else{
+            node.next = head;
+            head = node;
+        }
+    }
+    
+    public void addAtTail(int val) {
+         // Create a New node
+        Node node = new Node(val);
+        size++;
+        // no linkedList exists
+        if (head == null){
+            head = node;
+        }
+        else{
+            Node temp = head;
+            while( temp.next!= null){
+                temp = temp.next; // to move the temp to next node
+            }
+            temp.next = node;
+        }
+    }
+    
+    public void addAtIndex(int index, int val) {
+        if (index <0 || index>size){
+            return; //invalid index
+        }
+        if(index==0){
+            addAtHead(val);
+        }
+        else if(index == size){
+            addAtTail(val);
+        }
+        else{
+            Node node = new Node(val);
+            Node temp = head;
+            // add at mid
+            for(int i = 0; i<index-1; i++){
+                temp = temp.next;
+            }
+            node.next = temp.next;
+            temp.next= node;
+            size++;
+        }
+    }
+    
+    public void deleteAtIndex(int index) {
+        if(index<0 || index>=size){
+            return;
+        }
+        if(index==0){
+            head = head.next;
+        }
+        else{
+            Node temp = head;
+            for(int i = 0; i<index-1; i++){
+                temp = temp.next;
+            }
+            temp.next = temp.next.next;
+        }
+        size--;
+    }
+}
