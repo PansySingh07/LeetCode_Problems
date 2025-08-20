@@ -1,0 +1,35 @@
+public class Solution {
+    public ListNode getIntersectionNode(ListNode headA, ListNode headB) {
+        //Maintain set =====approach 1 ============ N,N
+        Set<ListNode> set = new HashSet<>();
+        while(headB!=null){
+            set.add(headB); 
+            headB = headB.next;
+        }
+
+        while(headA != null){
+            if(set.contains(headA)){
+                    return headA; //returning intersection node
+            }
+             headA = headA.next; // keep moving
+        }
+        return null;
+
+
+
+//======================= approach 2 ============================
+    
+    if(headA == null || headB == null){
+            return null;
+    }
+    ListNode a = headA;
+    ListNode b = headB;
+
+    //loop ntil a!=b(it means no intersection point found till)
+    while(a!=b){
+        a = (a==null)? headB : a.next;
+        b = (b==null)? headA : b.next;
+    }
+    return a;
+    }
+}
