@@ -1,0 +1,27 @@
+class Solution {
+    public ListNode swapPairs(ListNode head) {
+       // linkedList is empty or linkedList having one node
+       if(head == null || head.next==null){
+        return head;
+       } 
+       //after swap there would be a new head
+       ListNode newHead = head.next;
+       ListNode current = head;
+       ListNode prev = null; //track the last node of the prev swappped pair
+       while(current!=null && current.next!=null){
+        //find out the pairs for swaping
+        ListNode first = current;
+        ListNode second = current.next;
+        ListNode nextPair = second.next;
+        //swap happens here
+        second.next = first;
+        first.next = nextPair;
+        if(prev!=null){
+            prev.next = second;
+        }
+        prev = first;
+        current = nextPair;
+       }
+       return newHead;
+    }
+}
