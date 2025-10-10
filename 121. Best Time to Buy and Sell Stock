@@ -1,0 +1,38 @@
+class Solution {
+    //Approach 1
+    public int maxProfit(int[] prices) {
+    int maxProfit = 0;
+   int lowestPrice = prices[0];
+    for(int price:prices){
+        if (price >lowestPrice){
+            int profit = price-lowestPrice;
+            maxProfit = Math.max(profit, maxProfit);
+        }
+
+        lowestPrice = Math.min(lowestPrice, price);
+    }
+    return maxProfit;
+    }
+}
+
+
+
+//Approach -2 Brute Force
+class Solution {
+    public int maxProfit(int[] prices) {
+        int maxProfit = 0;
+        for(int i=0; i<prices.length; i++){
+            for (int j = i+1; j<prices.length; j++){
+                if(prices[j]>prices[i]){
+                    int profit = prices [j] - prices [i];
+                    maxProfit = Math.max(profit, maxProfit);
+                }
+            }
+        }
+        return maxProfit;
+    }
+}
+
+
+
+  
