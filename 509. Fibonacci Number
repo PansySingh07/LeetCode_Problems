@@ -1,12 +1,43 @@
 class Solution {
     public int fib(int n) {
-        if (n<=1){
+        if(n <=1){
             return n;
         }
 
         int firstTerm = fib(n-1);
-        int secondTerm = fib(n-2);
-        return firstTerm+secondTerm;
-    
+        int secTerm = fib(n-2);
+        return firstTerm + secTerm;
     }
-}
+    }
+
+   =========================================== // Memoization approach(Top_down_approach)
+    class Solution{
+        HashMap <Integer, Integer> cache = new HashMap<>(Map.of(0,0,1,1));
+        public int fib(int n){
+            // if already computed, so return from the cache
+            if(cache.containsKey(n)){
+                return cache.get(n);
+            }
+            // if not in cache so compute first and store in cache
+            cache.put(n, fib(n-1) + fib(n-2));
+            return cache.get(n);
+        }
+    }
+
+    ===========================================// Tabulation approach(Bottom_Up)
+    class Solution{
+        public int fib(int n){
+            if(n<=1){
+                return n;
+            }
+
+            int cache[] = new int [n+1];
+            //cache[0] = 0;
+            cache[1] = 1;
+            for(int i =2; i<=n; i++){
+                //fib(n-1)+fib(n-2)
+                cache[i] = cache [i-1] + cache [i-2];
+            }
+            return cache[n];
+        }
+    }
