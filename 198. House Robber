@@ -1,4 +1,4 @@
-//Brute Force Approach
+===================//Brute Force Approach
 class Solution {
     public int rob(int[] money) {
        return rob( money, 0);
@@ -24,7 +24,7 @@ class Solution {
 
 
 
-Memoization approach
+=================================== //Memoization approach
 
 class Solution {
     public int rob(int[] money) {
@@ -54,7 +54,7 @@ class Solution {
 }
 
 
-//Tabulation approach
+================================//Tabulation approach
 class Solution {
     public int rob(int[] money) {
         //edge cases
