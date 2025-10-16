@@ -1,0 +1,22 @@
+//Brute Force
+class Solution {
+    public int longestCommonSubsequence(String text1, String text2) {
+      return helper(text1, text2, text1.length()-1, text2.length()-1);  
+    }
+    int helper(String text1, String text2, int m, int n){
+        //base case
+        if(m<0 || n<0){
+            return 0;
+        }
+        // first case = if both stringg last character matched
+        if(text1.charAt(m) == text2.charAt(n)){
+           return 1 + helper(text1, text2, m-1, n-1);
+        }
+        //second Case = not matched
+        //option1: skip from text1
+       int option1 =  helper(text1, text2, m, n-1);
+       //option2:skip from text 2
+       int option2 = helper(text1, text2, m-1, n);
+       return Math.max(option1, option2);
+    }
+}
